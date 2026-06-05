@@ -1,26 +1,154 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-brand-blue-deep: #0B253D;
+  --color-brand-blue-medium: #115293;
+  --color-brand-blue-light: #EBF3FC;
+  --color-brand-lime: #C2FF00;
+  --color-brand-lime-hover: #AEE600;
+  --color-brand-navy: #061320;
+  --color-brand-navy-light: #0A1F33;
+  --color-brand-blue-accent: #005AC6;
+  
+  --color-navy-900: #0B253D;
+  --color-navy-800: #0A1F33;
+  --color-navy-700: #162D45;
+  --color-navy-600: #1C3A56;
+  --color-blue-500: #115293;
+  --color-blue-600: #005AC6;
+  --color-blue-400: #2B7FFF;
+  --color-lime-400: #C2FF00;
+  --color-lime-500: #AEE600;
+  --color-gray-50: #F4F7FA;
+  --color-gray-100: #EEF0F4;
+  --color-gray-200: #DDE1E8;
+  --color-gray-400: #8A94A6;
+  --color-gray-600: #4A5568;
+  --color-gray-800: #0B253D;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-fade-in-up: fade-in-up 0.6s ease-out forwards;
+  --animate-slide-in-left: slide-in-left 0.6s ease-out forwards;
+  --animate-slide-in-right: slide-in-right 0.6s ease-out forwards;
+  --animate-pulse-slow: pulse-slow 3s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: #0B253D;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #061320;
+}
+::-webkit-scrollbar-thumb {
+  background: #115293;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C2FF00;
+}
+
+/* Gradient backgrounds */
+.bg-hero-gradient {
+  background: linear-gradient(135deg, #0B253D 0%, #061320 100%);
+}
+
+.bg-cta-gradient {
+  background: linear-gradient(135deg, #115293 0%, #005AC6 50%, #061320 100%);
+}
+
+.bg-dark-gradient {
+  background: linear-gradient(180deg, #0B253D 0%, #061320 100%);
+}
+
+/* Glass card effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Blue glow effect */
+.glow-blue {
+  box-shadow: 0 0 30px rgba(0, 90, 198, 0.2);
+}
+
+.glow-blue-strong {
+  box-shadow: 0 0 45px rgba(0, 90, 198, 0.35);
+}
+
+/* Text gradient */
+.text-gradient {
+  background: linear-gradient(135deg, #2B7FFF, #C2FF00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth hover transitions */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(6, 19, 32, 0.1);
+}
+
+/* Section spacing utility */
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
 }
