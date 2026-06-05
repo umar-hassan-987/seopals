@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import PageHero from "@/components/PageHero";
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaLock, FaCheck } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaLock, FaCheck, FaGlobe, FaClock } from "react-icons/fa";
 
 const contactInfo = [
   {
@@ -56,12 +56,13 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="pt-[116px] bg-white text-brand-blue-deep overflow-hidden">
+    <div className="bg-white text-brand-blue-deep overflow-hidden">
       <PageHero
         badge="Contact Us"
         title="Start Your Brand's"
         highlight="SEO Domination"
         description="Ready to scale traffic and bookings? Reach out to our specialist SEO architects today and secure a custom audit report for your website."
+        bgImage="/images/contact_hero.png"
       />
 
       {/* Contact Section */}
@@ -197,7 +198,7 @@ export default function ContactPage() {
                       : "bg-brand-lime text-brand-blue-deep hover:bg-brand-lime-hover hover:shadow-lg shadow-brand-lime/10"
                   }`}
                 >
-                  {submitted ? "✓ Audit Requested!" : "SUBMIT REQUEST"}
+                  {submitted ? <><FaCheck className="inline mr-2" /> Audit Requested!</> : "SUBMIT REQUEST"}
                 </button>
               </form>
             </div>
@@ -256,17 +257,17 @@ export default function ContactPage() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                icon: "🌍",
+                icon: <FaGlobe />,
                 title: "Nationwide Strategy",
                 desc: "We serve B2B and SaaS brands across all 50 states with localized map campaigns."
               },
               {
-                icon: "⏱️",
+                icon: <FaClock />,
                 title: "24-Hour Responses",
                 desc: "We analyze all website audit requests and respond with a complete draft report inside 1 business day."
               },
               {
-                icon: "📞",
+                icon: <FaPhoneAlt />,
                 title: "Free Strategy Calls",
                 desc: "Every new engagement begins with a 30-minute diagnostic session to chart your keyword ranking roadmap."
               }

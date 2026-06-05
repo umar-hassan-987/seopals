@@ -1,6 +1,6 @@
 import PageHero from "@/components/PageHero";
 import Link from "next/link";
-import { FaFileAlt, FaCogs, FaLink, FaMapMarkedAlt, FaChartLine, FaSlidersH, FaCheck } from "react-icons/fa";
+import { FaFileAlt, FaCogs, FaLink, FaMapMarkedAlt, FaChartLine, FaSlidersH, FaCheck, FaPhoneAlt } from "react-icons/fa";
 
 export const metadata = {
   title: "Services | SEOPals — Specialist SEO Solutions",
@@ -25,6 +25,7 @@ const services = [
     ],
     icon: <FaFileAlt />,
     color: "blue",
+    image: "/images/onpage_seo.png",
   },
   {
     id: "technical",
@@ -42,6 +43,7 @@ const services = [
     ],
     icon: <FaCogs />,
     color: "lime",
+    image: "/images/technical_architecture.png",
   },
   {
     id: "link-building",
@@ -59,6 +61,7 @@ const services = [
     ],
     icon: <FaLink />,
     color: "blue",
+    image: "/images/link_building.png",
   },
   {
     id: "local-seo",
@@ -76,6 +79,7 @@ const services = [
     ],
     icon: <FaMapMarkedAlt />,
     color: "lime",
+    image: "/images/local_maps.png",
   },
   {
     id: "content",
@@ -93,6 +97,7 @@ const services = [
     ],
     icon: <FaSlidersH />,
     color: "blue",
+    image: "/images/content_writing.png",
   },
   {
     id: "audits",
@@ -110,17 +115,19 @@ const services = [
     ],
     icon: <FaChartLine />,
     color: "lime",
+    image: "/images/seo_analytics.png",
   },
 ];
 
 export default function ServicesPage() {
   return (
-    <div className="pt-[116px] bg-white text-brand-blue-deep overflow-hidden">
+    <div className="bg-white text-brand-blue-deep overflow-hidden">
       <PageHero
         badge="Our Capabilities"
         title="SEO Architectures That"
-        highlight="Drive Brand Growth"
-        description="From core technical sitemap repairs to localized map pack campaigns, we build custom systems targeting corporate organic growth."
+        highlight="Deliver Rankings"
+        description="We don't do basic SEO. We build enterprise-grade search architectures designed to capture high-intent traffic and dominate competitive SERPs."
+        bgImage="/images/services_hero.png"
       />
 
       {/* Services Detail */}
@@ -136,32 +143,12 @@ export default function ServicesPage() {
             >
               {/* Visual Side */}
               <div className={`${i % 2 === 1 ? "lg:order-2" : ""}`}>
-                <div
-                  className={`rounded-2xl aspect-[4/3] flex items-center justify-center p-10 border shadow-lg ${
-                    service.color === "blue"
-                      ? "bg-brand-blue-deep border-white/5 glow-blue"
-                      : "bg-gray-50 border-gray-100"
-                  }`}
-                >
-                  <div className="text-center space-y-4">
-                    <div
-                      className={`w-20 h-20 mx-auto rounded-2xl flex items-center justify-center text-4xl ${
-                        service.color === "blue"
-                          ? "bg-brand-lime/10 text-brand-lime"
-                          : "bg-brand-blue-light text-brand-blue-accent"
-                      }`}
-                    >
-                      {service.icon}
-                    </div>
-                    <h3
-                      className={`text-xl font-black ${
-                        service.color === "blue" ? "text-white" : "text-brand-blue-deep"
-                      }`}
-                    >
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-400 text-sm max-w-xs mx-auto">{service.tagline}</p>
-                  </div>
+                <div className="rounded-2xl aspect-[4/3] shadow-lg border border-gray-100 overflow-hidden flex bg-gray-50">
+                  <img 
+                    src={service.image} 
+                    alt={service.title} 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
 
@@ -261,7 +248,7 @@ export default function ServicesPage() {
               href="tel:+15551234567"
               className="inline-flex items-center gap-2 px-10 py-4 bg-white border border-gray-200 text-brand-blue-deep font-bold text-sm uppercase rounded-lg hover:bg-gray-50 shadow-sm"
             >
-              📞 Call Us Now
+              <FaPhoneAlt /> Call Us Now
             </a>
           </div>
         </div>

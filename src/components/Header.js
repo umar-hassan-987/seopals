@@ -28,9 +28,9 @@ export default function Header() {
   }, [pathname]);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50">
+    <div className="relative z-50">
       {/* Top Banner Bar */}
-      <div className="bg-brand-blue-medium text-white text-[11px] sm:text-xs py-2 px-4 sm:px-6 lg:px-8 flex items-center justify-between border-b border-white/10">
+      <div className="hidden lg:flex bg-brand-blue-medium text-white text-xs py-2 px-8 items-center justify-between border-b border-white/10">
         <div className="flex items-center gap-2">
           <span className="inline-block w-2.5 h-2.5 bg-brand-lime rounded-full"></span>
           <span className="font-semibold tracking-wide uppercase text-[10px]">Google Certified Partner</span>
@@ -40,27 +40,18 @@ export default function Header() {
             <FaPhoneAlt className="text-[10px]" /> Call Us Today: <span className="font-bold">+1 (555) 123-4567</span>
           </a>
           <span className="hidden sm:inline text-white/30">|</span>
-          <a href="mailto:info@seopals.com" className="hidden sm:inline hover:text-brand-lime transition-colors flex items-center gap-1.5">
+          <a href="mailto:info@seopals.com" className="hidden sm:flex hover:text-brand-lime transition-colors items-center gap-1.5">
             <FaEnvelope className="text-[10px]" /> info@seopals.com
           </a>
         </div>
       </div>
 
       {/* Main Navbar */}
-      <header
-        className={`transition-all duration-300 ${
-          scrolled
-            ? "bg-white shadow-md py-3"
-            : "bg-white border-b border-gray-100 py-4"
-        }`}
-      >
+      <header className="bg-white border-b border-gray-100 py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 rounded-lg bg-brand-blue-deep flex items-center justify-center text-brand-lime font-black text-xl group-hover:bg-brand-blue-accent transition-colors duration-300">
-                S
-              </div>
               <div>
                 <span className="text-brand-blue-deep font-extrabold text-2xl tracking-tight leading-none block">
                   SEO<span className="text-brand-blue-medium">Pals</span>

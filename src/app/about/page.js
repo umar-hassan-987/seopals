@@ -65,12 +65,13 @@ const expertise = [
 
 export default function AboutPage() {
   return (
-    <div className="pt-[116px] bg-white text-brand-blue-deep overflow-hidden">
+    <div className="bg-white text-brand-blue-deep overflow-hidden">
       <PageHero
         badge="About SEOPals"
         title="We Architect Enterprise"
         highlight="Organic Search Success"
         description="Since 2009, SEOPals has been the trusted search marketing partner for ambitious brands, SaaS platforms, and local services seeking to scale conversions."
+        bgImage="/images/about_hero.png"
       />
 
       {/* Company Story */}
@@ -80,14 +81,18 @@ export default function AboutPage() {
             
             {/* Visual */}
             <div className="relative">
-              <div className="rounded-2xl overflow-hidden bg-hero-gradient aspect-[4/3] flex items-center justify-center p-10 shadow-xl border border-white/5 glow-blue">
-                <div className="text-center space-y-6">
+              <div 
+                className="rounded-2xl overflow-hidden aspect-[4/3] flex items-center justify-center p-10 shadow-xl border border-white/5 glow-blue bg-cover bg-center relative"
+                style={{ backgroundImage: "url('/images/our_journey.png')" }}
+              >
+                <div className="absolute inset-0 bg-brand-blue-deep/80 backdrop-blur-[2px]"></div>
+                <div className="text-center space-y-6 relative z-10">
                   <div className="w-24 h-24 mx-auto rounded-full bg-brand-lime/10 border-2 border-brand-lime/30 flex items-center justify-center text-4xl animate-float text-brand-lime">
                     <FaAward />
                   </div>
                   <div>
                     <h3 className="text-white text-2xl font-black mb-2">Our Journey</h3>
-                    <p className="text-gray-400 text-sm max-w-xs mx-auto">
+                    <p className="text-gray-200 text-sm max-w-xs mx-auto">
                       Founded to make search engine optimization highly transparent, secure, and results-focused.
                     </p>
                   </div>

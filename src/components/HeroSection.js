@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FaRocket, FaChartLine } from "react-icons/fa";
 
 const stats = [
   { value: "15+", label: "Years Experience" },
@@ -121,13 +122,13 @@ export default function HeroSection() {
               </div>
 
               {/* Floating badge */}
-              <div className="absolute -top-4 -left-4 px-4 py-2 bg-lime-400 text-navy-900 font-bold text-sm rounded-lg shadow-lg shadow-lime-400/20 animate-float">
-                🚀 Top Rankings
+              <div className="absolute -top-4 -left-4 px-4 py-2 bg-lime-400 text-navy-900 font-bold text-sm rounded-lg shadow-lg shadow-lime-400/20 animate-float flex items-center gap-1.5">
+                <FaRocket /> Top Rankings
               </div>
 
               {/* Floating badge bottom */}
-              <div className="absolute -bottom-4 -right-4 px-4 py-2 bg-blue-500 text-white font-bold text-sm rounded-lg shadow-lg shadow-blue-500/20 animate-float" style={{ animationDelay: "3s" }}>
-                📈 +247% Growth
+              <div className="absolute -bottom-4 -right-4 px-4 py-2 bg-blue-500 text-white font-bold text-sm rounded-lg shadow-lg shadow-blue-500/20 animate-float flex items-center gap-1.5" style={{ animationDelay: "3s" }}>
+                <FaChartLine /> +247% Growth
               </div>
             </div>
           </div>

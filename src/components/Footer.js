@@ -47,16 +47,38 @@ const footerDirectories = {
 export default function Footer() {
   return (
     <footer className="bg-brand-navy text-white border-t border-white/5">
+      {/* Performance Stats Banner */}
+      <div className="border-b border-white/10 bg-brand-navy-light relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-navy/50 via-transparent to-brand-navy/50"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center sm:divide-x divide-white/10">
+            <div className="flex flex-col items-center justify-center space-y-2">
+              <div className="text-brand-lime font-black text-4xl md:text-5xl tracking-tight">150+</div>
+              <div className="text-gray-400 text-[10px] md:text-xs uppercase tracking-[0.2em] font-extrabold">Active Clients</div>
+            </div>
+            <div className="flex flex-col items-center justify-center space-y-2">
+              <div className="text-white font-black text-4xl md:text-5xl tracking-tight">97%</div>
+              <div className="text-gray-400 text-[10px] md:text-xs uppercase tracking-[0.2em] font-extrabold">Client Retention</div>
+            </div>
+            <div className="flex flex-col items-center justify-center space-y-2">
+              <div className="text-white font-black text-4xl md:text-5xl tracking-tight">12.3K+</div>
+              <div className="text-gray-400 text-[10px] md:text-xs uppercase tracking-[0.2em] font-extrabold">Page 1 Keywords</div>
+            </div>
+            <div className="flex flex-col items-center justify-center space-y-2">
+              <div className="text-brand-lime font-black text-4xl md:text-5xl tracking-tight">234%</div>
+              <div className="text-gray-400 text-[10px] md:text-xs uppercase tracking-[0.2em] font-extrabold">Avg Traffic Gain</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Main Footer Directory */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
           
           {/* Logo & Agency Stats Column */}
           <div className="lg:col-span-2 space-y-8">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-lg bg-brand-lime flex items-center justify-center text-brand-blue-deep font-black text-xl">
-                S
-              </div>
+            <Link href="/" className="inline-block">
               <div>
                 <span className="text-white font-extrabold text-2xl tracking-tight leading-none block">
                   SEO<span className="text-brand-lime">Pals</span>
@@ -89,25 +111,7 @@ export default function Footer() {
               ))}
             </div>
 
-            {/* Performance Stats */}
-            <div className="grid grid-cols-2 gap-6 pt-4 border-t border-white/10 max-w-sm">
-              <div>
-                <div className="text-brand-lime font-black text-3xl">150+</div>
-                <div className="text-gray-400 text-[10px] uppercase tracking-wider mt-1 font-semibold">Active Clients</div>
-              </div>
-              <div>
-                <div className="text-white font-black text-3xl">97%</div>
-                <div className="text-gray-400 text-[10px] uppercase tracking-wider mt-1 font-semibold">Client Retention</div>
-              </div>
-              <div>
-                <div className="text-white font-black text-3xl">12.3K+</div>
-                <div className="text-gray-400 text-[10px] uppercase tracking-wider mt-1 font-semibold">Page 1 Keywords</div>
-              </div>
-              <div>
-                <div className="text-brand-lime font-black text-3xl">234%</div>
-                <div className="text-gray-400 text-[10px] uppercase tracking-wider mt-1 font-semibold">Avg Traffic Gain</div>
-              </div>
-            </div>
+
           </div>
 
           {/* Directory Column 1: SEO Services */}
@@ -203,10 +207,8 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} SEOPals LLC. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white transition-colors">Crawlability Disclosures</a>
-            <a href="#" className="hover:text-white transition-colors">Sitemap</a>
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

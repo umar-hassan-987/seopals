@@ -24,8 +24,22 @@ import {
   FaArrowRight,
   FaPhoneAlt,
   FaEnvelope,
-  FaMapMarkerAlt
+  FaMapMarkerAlt,
+  FaHubspot
 } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { SiSemrush } from "react-icons/si";
+import { FaMeta } from "react-icons/fa6";
+
+const partnersList = [
+  { label: "Google Partner", logo: <FcGoogle className="text-3xl shrink-0" /> },
+  { label: "HubSpot Partner", logo: <FaHubspot className="text-3xl text-[#ff7a59] shrink-0" /> },
+  { label: "Semrush Partner", logo: <SiSemrush className="text-3xl text-[#ff642d] shrink-0" /> },
+  { label: "Ahrefs Certified", logo: <span className="font-serif text-[#ff6a00] text-3xl font-bold tracking-tighter shrink-0">ahrefs</span> },
+  { label: "Moz Pro", logo: <span className="font-black text-[#1d91d0] text-3xl tracking-tighter shrink-0">MOZ</span> },
+  { label: "Clutch Top Agency", logo: <span className="font-black text-gray-900 text-3xl tracking-tighter shrink-0">Clutch</span> },
+  { label: "Meta Business Partner", logo: <FaMeta className="text-3xl text-[#0668E1] shrink-0" /> },
+];
 
 export default function Home() {
   // Hero Audit Form State
@@ -85,25 +99,21 @@ export default function Home() {
   ];
 
   return (
-    <div className="pt-[116px] bg-white text-brand-blue-deep overflow-hidden">
+    <div className="bg-white text-brand-blue-deep overflow-hidden">
       
       {/* SECTION 1: HERO BLOCK */}
       <section 
-        className="relative pt-16 pb-20 lg:pt-24 lg:pb-32 overflow-hidden border-b border-white/5 bg-cover bg-center"
+        className="relative flex flex-col justify-center min-h-[calc(100vh-104px)] py-12 lg:py-16 overflow-hidden border-b border-white/5 bg-cover bg-center"
         style={{ backgroundImage: "url('/images/hero_bg.png')" }}
       >
         {/* Dark Teal/Blue Overlay */}
         <div className="absolute inset-0 bg-brand-blue-deep/90 backdrop-blur-[1px]"></div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             
             {/* Left Content */}
-            <div className="lg:col-span-7 text-left space-y-8 animate-fade-in-up">
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-lime/10 border border-brand-lime/20 rounded-full text-brand-lime text-xs font-extrabold uppercase tracking-widest">
-                <span className="w-2 h-2 bg-brand-lime rounded-full animate-pulse-slow"></span>
-                SEOPals Core Search Strategy
-              </span>
+            <div className="lg:col-span-7 text-left space-y-6 animate-fade-in-up">
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.05] tracking-tight">
                 ARCHITECT SEO<br />
@@ -193,18 +203,6 @@ export default function Home() {
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-brand-blue-deep placeholder:text-gray-400 focus:outline-none focus:border-brand-blue-accent focus:ring-2 focus:ring-brand-blue-accent/10 transition-all"
                     />
                   </div>
-                  <div>
-                    <label className="block text-xs font-extrabold text-brand-blue-deep uppercase tracking-wider mb-1.5">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      placeholder="(555) 123-4567"
-                      value={heroForm.phone}
-                      onChange={(e) => setHeroForm({ ...heroForm, phone: e.target.value })}
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-brand-blue-deep placeholder:text-gray-400 focus:outline-none focus:border-brand-blue-accent focus:ring-2 focus:ring-brand-blue-accent/10 transition-all"
-                    />
-                  </div>
 
                   <button
                     type="submit"
@@ -214,7 +212,7 @@ export default function Home() {
                         : "bg-brand-lime text-brand-blue-deep hover:bg-brand-lime-hover hover:shadow-lg shadow-brand-lime/10"
                     }`}
                   >
-                    {heroSubmitted ? "✓ Audit Requested!" : "GET MY FREE AUDIT"}
+                    {heroSubmitted ? <><FaCheck className="inline mr-2" /> Audit Requested!</> : "GET MY FREE AUDIT"}
                   </button>
                 </form>
               </div>
@@ -223,7 +221,7 @@ export default function Home() {
           </div>
 
           {/* Hero Bottom Badges */}
-          <div className="mt-20 pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6 items-center text-center">
+          <div className="mt-8 lg:mt-12 pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6 items-center text-center">
             {[
               { label: "1st Page Rankings Guarantee", icon: <FaAward className="text-xl text-brand-lime inline" /> },
               { label: "Google Certified Partner", icon: <FaGoogle className="text-xl text-brand-lime inline" /> },
@@ -241,20 +239,30 @@ export default function Home() {
       </section>
 
       {/* SECTION 2: PLATFORM PARTNERSHIPS & KEY HIGHLIGHTS */}
-      <section className="py-16 bg-gray-50 border-b border-gray-100">
+      <section className="py-24 bg-gray-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h4 className="text-center text-gray-400 text-xs sm:text-sm uppercase tracking-widest font-extrabold mb-10">
             Certified Technologies We Use & Platform Partnerships
           </h4>
           
-          {/* Logo Grids */}
-          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16 opacity-60 hover:opacity-90 transition-opacity">
-            {["Google Partner", "HubSpot Partner", "Semrush Partner", "Ahrefs Certified", "Moz Pro", "Clutch Top Agency"].map((p, idx) => (
-              <div key={idx} className="flex items-center gap-2 font-black text-brand-blue-deep tracking-tight text-lg">
-                <span className="w-7 h-7 rounded bg-brand-blue-deep text-brand-lime flex items-center justify-center text-xs">S</span>
-                <span>{p}</span>
-              </div>
-            ))}
+          {/* Logo Marquee */}
+          <div className="flex overflow-hidden relative transition-opacity group">
+            <div className="flex animate-marquee gap-6 md:gap-8 pr-6 md:pr-8 flex-shrink-0 group-hover:[animation-play-state:paused] py-4">
+              {[...partnersList, ...partnersList].map((p, idx) => (
+                <div key={idx} className="flex items-center gap-4 bg-white px-8 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                  {p.logo}
+                  <span className="font-bold text-gray-800 tracking-tight text-lg whitespace-nowrap">{p.label}</span>
+                </div>
+              ))}
+            </div>
+            <div className="flex animate-marquee gap-6 md:gap-8 pr-6 md:pr-8 flex-shrink-0 group-hover:[animation-play-state:paused] py-4" aria-hidden="true">
+              {[...partnersList, ...partnersList].map((p, idx) => (
+                <div key={idx} className="flex items-center gap-4 bg-white px-8 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                  {p.logo}
+                  <span className="font-bold text-gray-800 tracking-tight text-lg whitespace-nowrap">{p.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* 4 Highlighted Boxes */}
@@ -285,34 +293,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             
-            {/* Left Graphic Mockup with Real Image inside it */}
+            {/* Left Graphic */}
             <div className="relative">
-              <div className="bg-brand-blue-deep rounded-2xl p-4 shadow-2xl overflow-hidden aspect-[4/3] flex flex-col justify-between border border-white/10 glow-blue">
-                {/* Header of laptop */}
-                <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-500"></span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-green-500"></span>
-                  </div>
-                  <span className="text-white/60 text-[10px] font-mono">seopals-dashboard.io</span>
-                  <span className="px-2 py-0.5 bg-brand-lime/10 text-brand-lime text-[9px] font-bold rounded">LIVE DATA</span>
-                </div>
-
-                {/* Real Image container inside the dashboard mock */}
-                <div className="flex-1 rounded-xl overflow-hidden relative border border-white/5 bg-cover bg-center" style={{ backgroundImage: "url('/images/analytics_dashboard.png')" }}>
-                  <div className="absolute inset-0 bg-brand-blue-deep/60 flex flex-col justify-end p-4">
-                    <div className="bg-brand-blue-deep/90 backdrop-blur-md rounded-lg p-3 max-w-xs space-y-1">
-                      <div className="text-[10px] text-gray-400 uppercase font-black tracking-wider">Dashboard Metric</div>
-                      <div className="text-white font-extrabold text-sm flex items-center justify-between">
-                        <span>Organic Clicks</span>
-                        <span className="text-brand-lime text-xs">+234.8%</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="rounded-2xl shadow-2xl overflow-hidden aspect-[4/3] border border-gray-100 bg-gray-50 flex items-center justify-center">
+                <img src="/images/seo_analytics.png" alt="SEO Analytics Dashboard" className="w-full h-full object-cover" />
               </div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-brand-lime/10 rounded-2xl -z-10 animate-pulse-slow"></div>
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-brand-lime/20 rounded-2xl -z-10 animate-pulse-slow"></div>
             </div>
 
             {/* Right Copy */}
@@ -324,7 +310,7 @@ export default function Home() {
                 How We Dominate Your Industry's Search Landscape
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed">
-                General agencies use standard cookie-cutter templates. At **SEOPals**, we architect customized sitemap structures, content clusters, and outreach networks designed specifically for your corporate target audience.
+                General agencies use standard cookie-cutter templates. At <strong className="text-brand-blue-deep font-black">SEOPals</strong>, we architect customized sitemap structures, content clusters, and outreach networks designed specifically for your corporate target audience.
               </p>
 
               {/* Checklist */}
@@ -598,16 +584,9 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            {/* Visual Box with background image */}
-            <div 
-              className="rounded-2xl aspect-[4/3] p-8 flex items-center justify-center glow-blue text-center bg-cover bg-center relative overflow-hidden"
-              style={{ backgroundImage: "url('/images/technical_architecture.png')" }}
-            >
-              <div className="absolute inset-0 bg-brand-blue-deep/80"></div>
-              <div className="relative space-y-2">
-                <div className="text-white font-extrabold text-lg">Indexation Health Status</div>
-                <div className="text-brand-lime font-mono text-sm">99.8% Healthy (0 Errors found)</div>
-              </div>
+            {/* Visual Box with Image */}
+            <div className="rounded-2xl aspect-[4/3] shadow-lg border border-gray-100 overflow-hidden bg-gray-50 flex">
+              <img src="/images/technical_architecture.png" alt="Technical SEO Audits & Architecture" className="w-full h-full object-cover" />
             </div>
           </div>
 
@@ -633,16 +612,9 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            {/* Visual Box with background image */}
-            <div 
-              className="lg:order-1 rounded-2xl aspect-[4/3] p-8 flex items-center justify-center text-center bg-cover bg-center relative overflow-hidden"
-              style={{ backgroundImage: "url('/images/content_writing.png')" }}
-            >
-              <div className="absolute inset-0 bg-brand-blue-deep/75"></div>
-              <div className="relative space-y-2">
-                <div className="text-white font-extrabold text-lg">Topic Cluster Authority</div>
-                <div className="text-brand-lime font-mono text-sm">Domain Rank: Tier 1 Domination</div>
-              </div>
+            {/* Visual Box with Image */}
+            <div className="lg:order-1 rounded-2xl aspect-[4/3] shadow-lg border border-gray-100 overflow-hidden bg-gray-50 flex">
+              <img src="/images/content_writing.png" alt="High-Quality Content & Keyword Targeting" className="w-full h-full object-cover" />
             </div>
           </div>
 
@@ -668,16 +640,9 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            {/* Visual Box with background image */}
-            <div 
-              className="rounded-2xl aspect-[4/3] p-8 flex items-center justify-center glow-blue text-center bg-cover bg-center relative overflow-hidden"
-              style={{ backgroundImage: "url('/images/local_maps.png')" }}
-            >
-              <div className="absolute inset-0 bg-brand-blue-deep/75"></div>
-              <div className="relative space-y-2">
-                <div className="text-white font-extrabold text-lg">Google Maps #1 Rankings</div>
-                <div className="text-brand-lime font-mono text-sm">Commanding local search areas</div>
-              </div>
+            {/* Visual Box with Image */}
+            <div className="rounded-2xl aspect-[4/3] shadow-lg border border-gray-100 overflow-hidden bg-gray-50 flex">
+              <img src="/images/local_maps.png" alt="Local SEO & Map Pack Domination" className="w-full h-full object-cover" />
             </div>
           </div>
 
@@ -878,7 +843,7 @@ export default function Home() {
                         : "bg-brand-lime text-brand-blue-deep hover:bg-brand-lime-hover shadow-md"
                     }`}
                   >
-                    {proposalSubmitted ? "✓ Proposal Requested!" : "SUBMIT REQUEST"}
+                    {proposalSubmitted ? <><FaCheck className="inline mr-2" /> Proposal Requested!</> : "SUBMIT REQUEST"}
                   </button>
                 </form>
               </div>

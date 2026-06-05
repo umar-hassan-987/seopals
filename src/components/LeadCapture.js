@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { FaLock, FaBolt, FaBullseye, FaCheck } from "react-icons/fa";
 
 export default function LeadCapture() {
   const [email, setEmail] = useState("");
@@ -52,7 +53,7 @@ export default function LeadCapture() {
                 type="submit"
                 className="px-8 py-4 bg-lime-400 text-navy-900 font-bold text-sm rounded-lg hover:bg-lime-500 transition-all duration-300 hover:shadow-xl hover:shadow-lime-400/20 whitespace-nowrap"
               >
-                {submitted ? "✓ Sent!" : "Get Free Audit"}
+                {submitted ? <><FaCheck className="inline mr-2" /> Sent!</> : "Get Free Audit"}
               </button>
             </div>
             <p className="text-gray-600 text-xs mt-4">
@@ -63,9 +64,9 @@ export default function LeadCapture() {
           {/* Trust indicators */}
           <div className="flex flex-wrap items-center justify-center gap-6 mt-12">
             {[
-              { icon: "🔒", text: "SSL Secured" },
-              { icon: "⚡", text: "Results in 90 Days" },
-              { icon: "🎯", text: "No Lock-in Contracts" },
+              { icon: <FaLock />, text: "SSL Secured" },
+              { icon: <FaBolt />, text: "Results in 90 Days" },
+              { icon: <FaBullseye />, text: "No Lock-in Contracts" },
             ].map((item) => (
               <div key={item.text} className="flex items-center gap-2 text-gray-500 text-sm">
                 <span>{item.icon}</span>

@@ -1,6 +1,10 @@
-export default function PageHero({ badge, title, highlight, description }) {
+export default function PageHero({ badge, title, highlight, description, bgImage }) {
   return (
-    <section className="relative bg-hero-gradient pt-36 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">
+    <section 
+      className="relative pt-36 pb-20 lg:pt-44 lg:pb-28 overflow-hidden bg-cover bg-center"
+      style={{ backgroundImage: bgImage ? `url('${bgImage}')` : 'none' }}
+    >
+      <div className="absolute inset-0 bg-brand-blue-deep/90 backdrop-blur-[2px]"></div>
       {/* Background decorations */}
       <div className="absolute inset-0">
         <div className="absolute top-1/3 -right-32 w-96 h-96 bg-brand-blue-accent/10 rounded-full blur-3xl" />
@@ -9,11 +13,7 @@ export default function PageHero({ badge, title, highlight, description }) {
       </div>
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {badge && (
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-lime/10 border border-brand-lime/20 rounded-full text-brand-lime text-xs font-extrabold uppercase tracking-widest mb-6">
-            {badge}
-          </div>
-        )}
+
 
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-6">
           {title}{" "}

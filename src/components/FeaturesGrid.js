@@ -1,12 +1,14 @@
+import { FaBullseye, FaChartBar, FaLink, FaBolt, FaGlobe, FaShieldAlt, FaMobileAlt, FaTrophy } from "react-icons/fa";
+
 const features = [
-  { icon: "🎯", title: "Precision Targeting", description: "Laser-focused keyword research that connects you with high-intent buyers." },
-  { icon: "📊", title: "Real-Time Analytics", description: "Live dashboards showing your rankings, traffic, and conversions 24/7." },
-  { icon: "🔗", title: "Authority Building", description: "Ethical link acquisition from respected publications in your industry." },
-  { icon: "⚡", title: "Speed Optimization", description: "Core Web Vitals and page speed improvements for better user experience." },
-  { icon: "🌍", title: "Global & Local Reach", description: "Multi-location SEO campaigns tailored to your target markets." },
-  { icon: "🛡️", title: "Penalty Recovery", description: "Expert diagnosis and recovery from algorithmic and manual penalties." },
-  { icon: "📱", title: "Mobile-First SEO", description: "Optimized for the mobile-first index to capture on-the-go searchers." },
-  { icon: "🏆", title: "Competitive Analysis", description: "Deep competitor intelligence to find gaps and opportunities." },
+  { icon: <FaBullseye />, title: "Precision Targeting", description: "Laser-focused keyword research that connects you with high-intent buyers." },
+  { icon: <FaChartBar />, title: "Real-Time Analytics", description: "Live dashboards showing your rankings, traffic, and conversions 24/7." },
+  { icon: <FaLink />, title: "Authority Building", description: "Ethical link acquisition from respected publications in your industry." },
+  { icon: <FaBolt />, title: "Speed Optimization", description: "Core Web Vitals and page speed improvements for better user experience." },
+  { icon: <FaGlobe />, title: "Global & Local Reach", description: "Multi-location SEO campaigns tailored to your target markets." },
+  { icon: <FaShieldAlt />, title: "Penalty Recovery", description: "Expert diagnosis and recovery from algorithmic and manual penalties." },
+  { icon: <FaMobileAlt />, title: "Mobile-First SEO", description: "Optimized for the mobile-first index to capture on-the-go searchers." },
+  { icon: <FaTrophy />, title: "Competitive Analysis", description: "Deep competitor intelligence to find gaps and opportunities." },
 ];
 
 const partners = [
