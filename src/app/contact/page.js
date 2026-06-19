@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import PageHero from "@/components/PageHero";
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaLock, FaCheck, FaGlobe, FaClock } from "react-icons/fa";
 
