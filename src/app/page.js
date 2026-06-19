@@ -42,25 +42,12 @@ const partnersList = [
 ];
 
 export default function Home() {
-  // Hero Audit Form State
-  const [heroForm, setHeroForm] = useState({ name: "", email: "", website: "", phone: "" });
-  const [heroSubmitted, setHeroSubmitted] = useState(false);
-
   // Bottom Proposal Form State
   const [proposalForm, setProposalForm] = useState({ name: "", email: "", website: "", phone: "", message: "" });
   const [proposalSubmitted, setProposalSubmitted] = useState(false);
 
   // FAQ Accordion State
   const [activeFaq, setActiveFaq] = useState(null);
-
-  const handleHeroSubmit = (e) => {
-    e.preventDefault();
-    setHeroSubmitted(true);
-    setTimeout(() => {
-      setHeroSubmitted(false);
-      setHeroForm({ name: "", email: "", website: "", phone: "" });
-    }, 3000);
-  };
 
   const handleProposalSubmit = (e) => {
     e.preventDefault();
@@ -153,68 +140,43 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Card Form */}
+            {/* Right Card CTA */}
             <div className="lg:col-span-5 w-full max-w-md mx-auto lg:ml-auto animate-slide-in-right">
-              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl border border-gray-100 glow-blue-strong">
-                <h3 className="text-2xl font-black text-brand-blue-deep text-center mb-2">
-                  Get A Free Website Audit
-                </h3>
-                <p className="text-gray-500 text-sm text-center mb-6">
-                  Enter your details below and our specialists will run a custom audit report for your site.
-                </p>
+              <div className="bg-white rounded-2xl p-8 sm:p-10 shadow-2xl border border-gray-100 glow-blue-strong text-center flex flex-col justify-between h-full space-y-8">
+                <div>
+                  <span className="inline-flex items-center gap-2 px-3 py-1 bg-brand-blue-light text-brand-blue-accent text-xs font-extrabold uppercase rounded-full mb-4">
+                    Limited Offer
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-black text-brand-blue-deep leading-tight">
+                    Get Your Free SEO Ranking Roadmap
+                  </h3>
+                  <p className="text-gray-500 text-sm mt-4 leading-relaxed">
+                    Ready to scale traffic and bookings? Claim your customized organic analysis and maps roadmap prepared by our specialist SEO architects.
+                  </p>
+                </div>
 
-                <form onSubmit={handleHeroSubmit} className="space-y-4">
-                  <div>
-                    <label className="block text-xs font-extrabold text-brand-blue-deep uppercase tracking-wider mb-1.5">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="John Smith"
-                      value={heroForm.name}
-                      onChange={(e) => setHeroForm({ ...heroForm, name: e.target.value })}
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-brand-blue-deep placeholder:text-gray-400 focus:outline-none focus:border-brand-blue-accent focus:ring-2 focus:ring-brand-blue-accent/10 transition-all"
-                    />
+                <div className="space-y-4 text-left bg-gray-50 p-5 rounded-xl border border-gray-100">
+                  <div className="flex items-center gap-3">
+                    <FaCheckCircle className="text-brand-lime text-lg shrink-0" />
+                    <span className="text-brand-blue-deep font-bold text-sm">30-Min Diagnostic Audit Call</span>
                   </div>
-                  <div>
-                    <label className="block text-xs font-extrabold text-brand-blue-deep uppercase tracking-wider mb-1.5">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="john@company.com"
-                      value={heroForm.email}
-                      onChange={(e) => setHeroForm({ ...heroForm, email: e.target.value })}
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-brand-blue-deep placeholder:text-gray-400 focus:outline-none focus:border-brand-blue-accent focus:ring-2 focus:ring-brand-blue-accent/10 transition-all"
-                    />
+                  <div className="flex items-center gap-3">
+                    <FaCheckCircle className="text-brand-lime text-lg shrink-0" />
+                    <span className="text-brand-blue-deep font-bold text-sm">Competitor Backlink Analysis</span>
                   </div>
-                  <div>
-                    <label className="block text-xs font-extrabold text-brand-blue-deep uppercase tracking-wider mb-1.5">
-                      Website URL *
-                    </label>
-                    <input
-                      type="url"
-                      required
-                      placeholder="https://www.yourcompany.com"
-                      value={heroForm.website}
-                      onChange={(e) => setHeroForm({ ...heroForm, website: e.target.value })}
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-brand-blue-deep placeholder:text-gray-400 focus:outline-none focus:border-brand-blue-accent focus:ring-2 focus:ring-brand-blue-accent/10 transition-all"
-                    />
+                  <div className="flex items-center gap-3">
+                    <FaCheckCircle className="text-brand-lime text-lg shrink-0" />
+                    <span className="text-brand-blue-deep font-bold text-sm">Google Maps Keyword Blueprint</span>
                   </div>
+                </div>
 
-                  <button
-                    type="submit"
-                    className={`w-full py-4 mt-2 font-black text-sm uppercase tracking-wider rounded-lg transition-all ${
-                      heroSubmitted
-                        ? "bg-green-600 text-white"
-                        : "bg-brand-lime text-brand-blue-deep hover:bg-brand-lime-hover hover:shadow-lg shadow-brand-lime/10"
-                    }`}
-                  >
-                    {heroSubmitted ? <><FaCheck className="inline mr-2" /> Audit Requested!</> : "GET MY FREE AUDIT"}
-                  </button>
-                </form>
+                <Link
+                  href="/contact"
+                  className="w-full inline-flex items-center justify-center gap-2 px-8 py-5 bg-brand-lime text-brand-blue-deep font-black text-sm uppercase tracking-wider rounded-lg hover:bg-brand-lime-hover hover:shadow-lg shadow-brand-lime/20 transition-all duration-300"
+                >
+                  CLAIM FREE AUDIT NOW
+                  <FaArrowRight className="text-xs" />
+                </Link>
               </div>
             </div>
 

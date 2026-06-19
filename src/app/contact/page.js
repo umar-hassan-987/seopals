@@ -41,18 +41,50 @@ export default function ContactPage() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
+    setSubmitting(true);
+    setError("");
+    try {
+      const serviceId = (process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "").trim();
+      const templateId = (process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "").trim();
+      const publicKey = (process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "").trim();
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error("EmailJS configuration is missing in environment variables.");
+      }
+
+      const templateParams = {
+        site_name: "SEOPals",
+        to_email: (process.env.NEXT_PUBLIC_EMAILJS_TO_EMAIL || "").trim() || "thelakewayroofingcompany@gmail.com",
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone || "N/A",
+        service: formData.service || "None Selected",
+        address_or_website: formData.website,
+        message: formData.message,
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      setSubmitted(true);
       setFormData({ name: "", email: "", phone: "", website: "", service: "", message: "" });
-    }, 3000);
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+    } catch (err) {
+      console.error("EmailJS Error:", err);
+      setError(err.message || "Failed to send email. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -191,15 +223,27 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  disabled={submitted}
-                  className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-4 font-black text-sm uppercase tracking-wider rounded-lg transition-all ${
+                  disabled={submitted || submitting}
+                  className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-4 font-black text-sm uppercase tracking-wider rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
                     submitted
                       ? "bg-green-600 text-white"
                       : "bg-brand-lime text-brand-blue-deep hover:bg-brand-lime-hover hover:shadow-lg shadow-brand-lime/10"
                   }`}
                 >
-                  {submitted ? <><FaCheck className="inline mr-2" /> Audit Requested!</> : "SUBMIT REQUEST"}
+                  {submitting ? (
+                    "SENDING..."
+                  ) : submitted ? (
+                    <><FaCheck className="inline mr-2" /> Audit Requested!</>
+                  ) : (
+                    "SUBMIT REQUEST"
+                  )}
                 </button>
+
+                {error && (
+                  <div className="mt-4 text-sm font-bold text-red-600 bg-red-50 py-3 px-4 rounded-lg border border-red-200">
+                    {error}
+                  </div>
+                )}
               </form>
             </div>
 
